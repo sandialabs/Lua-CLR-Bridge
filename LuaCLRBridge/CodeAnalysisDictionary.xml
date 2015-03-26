@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Dictionary>
+  <Words>
+    <Recognized>
+      <Word>metatable</Word>
+      <Word>rhs</Word>
+    </Recognized>
+  </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym>CLR</Acronym>
+      <Acronym>L</Acronym>
+    </CasingExceptions>
+  </Acronyms>
+</Dictionary>

@@ -1,0 +1,8 @@
+syntax: glob
+bin/
+doxygen/
+*/obj/
+TestResults/
+*.sdf
+*.suo
+*.user

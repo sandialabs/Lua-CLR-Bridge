@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F4686340-33DA-4A5E-8F6E-04D26D9D7EB6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LuaCLRBridge</RootNamespace>
+    <AssemblyName>LuaBridge</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Debug\LuaBridge.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>..\bin\x64\Debug\LuaBridge.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>..\bin\x86\Debug\LuaBridge.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Release\LuaBridge.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>..\bin\x64\Release\LuaBridge.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>..\bin\x86\Release\LuaBridge.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <Import Project="$(ProjectDir)..\LuaCLRBridge.props" />
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>$(KeyFile)</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bridge\BindingHintsException.cs" />
+    <Compile Include="Bridge\CLRBridgeException.cs" />
+    <Compile Include="Bridge\InstrumentedLuaBridge.cs" />
+    <Compile Include="Bridge\LuaCompilerException.cs" />
+    <Compile Include="Bridge\LuaPanicException.cs" />
+    <Compile Include="Bridge\LuaStateHandle.cs" />
+    <Compile Include="Bridge\ObjectTranslatorBindingHints.cs" />
+    <Compile Include="Bridge\CLRBridge.cs" />
+    <Compile Include="Bridge\CLRInt64.cs" />
+    <Compile Include="Bridge\CLRStaticContext.cs" />
+    <Compile Include="Bridge\CLRUInt64.cs" />
+    <Compile Include="Bridge\LuaHideInheritedMembersAttribute.cs" />
+    <Compile Include="Bridge\LuaBase.cs" />
+    <Compile Include="Bridge\LuaBinder.cs" />
+    <Compile Include="Bridge\LuaBridge.cs" />
+    <Compile Include="Bridge\LuaBridgeBase.cs" />
+    <Compile Include="Bridge\LuaRuntimeException.cs" />
+    <Compile Include="Bridge\LuaFunction.cs" />
+    <Compile Include="Bridge\LuaFunctionBase.cs" />
+    <Compile Include="Bridge\LuaTable.cs" />
+    <Compile Include="Bridge\LuaTableBase.cs" />
+    <Compile Include="Bridge\LuaThread.cs" />
+    <Compile Include="Bridge\LuaThreadBridge.cs" />
+    <Compile Include="Bridge\LuaUserData.cs" />
+    <Compile Include="Bridge\ObjectTranslator.cs" />
+    <Compile Include="Bridge\ObjectTranslatorException.cs" />
+    <Compile Include="Bridge\LuaState.cs" />
+    <Compile Include="Bridge\ObjectTranslatorLuaFunctionDelegates.cs" />
+    <Compile Include="Bridge\ObjectTranslatorMetamethods.cs" />
+    <Compile Include="Bridge\ObjectTranslatorObjectUserDatas.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ArrayUtility.cs" />
+    <Compile Include="Utility\ExceptionExtensions.cs" />
+    <Compile Include="Utility\IdentityEqualityComparer.cs" />
+    <Compile Include="Utility\ParameterInfoExtensions.cs" />
+    <Compile Include="Utility\TypeExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuaWrapper\LuaWrapper.vcxproj">
+      <Project>{5341DAC3-2FB6-4D5E-9EB1-E8A29A0AC2A2}</Project>
+      <Name>LuaWrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="CodeAnalysisDictionary.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
