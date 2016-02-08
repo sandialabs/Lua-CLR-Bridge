@@ -605,5 +605,26 @@ namespace LuaCLRBridge.Test.ObjectTranslator
                 Assert.AreEqual((double)1, lua["x"]);
             }
         }
+
+        [TestMethod]
+        public void PreventAccessingCollectedObject()
+        {
+            using (var lua = new LuaBridge())
+            {
+                lua.LoadLib("_G");
+
+                lua.Do(@"function defer(f)
+                             setmetatable({}, { __gc = f })
+                         end");
+
+                var table = lua.NewTable();
+
+                lua["t"] = table;
+
+                lua.Do("defer(function() t[1].ToString() end)");
+
+                table[1] = new object();
+            }
+        }
     }
 }

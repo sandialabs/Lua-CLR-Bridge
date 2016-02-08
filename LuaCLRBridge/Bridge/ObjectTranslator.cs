@@ -584,6 +584,16 @@ namespace LuaCLRBridge
             IntPtr udata = LuaWrapper.luaL_testudata(L, 1, metatableName, _encoding);
             Debug.Assert(udata != IntPtr.Zero, "Should only be invoked on appropriate userdata.");
 
+            /* Ensure that the userdata cannot be used after being garbage collected.  (Yes, this is possible.
+             * The userdata may be an upvalue of the __gc function of another object being collected.) */
+
+            CheckStack(L, 1);  // nil
+
+            LuaWrapper.lua_pushnil(L);
+            LuaWrapper.lua_setmetatable(L, -2);
+
+            // Release the CLI object reference.
+
             GCHandle handle = (GCHandle)Marshal.PtrToStructure(udata, typeof(GCHandle));
 
             Debug.Assert(_handles.Contains(handle), "Object handle should still exist.");
@@ -634,7 +644,7 @@ namespace LuaCLRBridge
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Throwing from a Lua message handler accomplishes nothing.")]
         [SecurityCritical]
-        internal static int StackCollector( IntPtr L, ObjectTranslator objectTranslator )
+        private static int StackCollector( IntPtr L, ObjectTranslator objectTranslator )
         {
             Debug.Assert(objectTranslator.HasSameMainState(L), "Stack collector invoked in unrelated Lua state.");
 
