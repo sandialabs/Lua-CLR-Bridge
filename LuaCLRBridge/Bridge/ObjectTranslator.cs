@@ -34,6 +34,9 @@ namespace LuaCLRBridge
         [SecurityCritical]
         private bool _disposed = false;
 
+        /// <summary>
+        /// The main thread of the Lua state.
+        /// </summary>
         [SecurityCritical]
         private LuaStateHandle _mainL;
 
@@ -41,9 +44,23 @@ namespace LuaCLRBridge
 
         private CLRBridge _clrBridge;
 
+        /// <summary>
+        /// The handles of CLI objects that are referenced by the Lua state and must not be collected by the
+        /// CLR garbage collector.
+        /// </summary>
         [SecurityCritical]
         private readonly HashSet<GCHandle> _handles = new HashSet<GCHandle>();
 
+        /// <summary>
+        /// The Lua objects that will be unreferenced when the Lua state is not in use.
+        /// </summary>
+        /// <remarks>
+        /// When a <see cref="LuaBase"/> is finalized, it must unreference the Lua object so that the Lua
+        /// object becomes eligible for collection by the Lua garbage collector.  The Lua state must be
+        /// locked in order to unreference the object.  In order to avoid blocking the CLR finalizer thread,
+        /// if the Lua state is locked when the finalizer runs then unreferencing is deferred until later
+        /// (and on some other thread).
+        /// </remarks>
         [SecurityCritical]
         private ConcurrentQueue<DeferredUnref> _deferredUnrefs = new ConcurrentQueue<DeferredUnref>();
 
