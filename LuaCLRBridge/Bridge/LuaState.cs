@@ -76,7 +76,7 @@ namespace LuaCLRBridge
             ~LockedLuaState()
             {
                 if (_objectTranslator != null)
-                    throw new InvalidOperationException("must dispose lock object!");
+                    throw new InvalidOperationException("Must dispose lock object!");
             }
 #endif
 

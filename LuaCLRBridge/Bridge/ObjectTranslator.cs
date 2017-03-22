@@ -105,6 +105,25 @@ namespace LuaCLRBridge
             Dispose(false);
         }
 
+        /// <summary>
+        /// Gets an indicator that the <see cref="ObjectTranslator"/> is disposed.  Only an
+        /// indication of <c>true</c> is meaningful.  A value of <c>false</c> does not actually
+        /// indicate that the <see cref="ObjectTranslator"/> is not disposed.
+        /// </summary>
+        /// <remarks>
+        /// This is used as a check for a fast path that avoids calling <see
+        /// cref="LockedMainState"/> or <see cref="TryLockedMainState"/> because they will certainly
+        /// throw <see cref="ObjectDisposedException"/> if this indicator is <c>true</c>.
+        /// </remarks>
+        internal bool IsDisposed
+        {
+            [SecurityCritical]
+            get
+            {
+                return _disposed;
+            }
+        }
+
         internal LuaState.LockedLuaState LockedMainState
         {
             [SecurityCritical]

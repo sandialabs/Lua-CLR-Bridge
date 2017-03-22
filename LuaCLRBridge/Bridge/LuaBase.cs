@@ -89,25 +89,29 @@ namespace LuaCLRBridge
 
             _disposed = true;
 
-            try
+            if (_objectTranslator != null &&
+                !_objectTranslator.IsDisposed)
             {
-                using (var lockedMainL = _objectTranslator.TryLockedMainState)
+                try
                 {
-                    if (lockedMainL._L != IntPtr.Zero)
+                    using (var lockedMainL = _objectTranslator.TryLockedMainState)
                     {
-                        var L = lockedMainL._L;
+                        if (lockedMainL._L != IntPtr.Zero)
+                        {
+                            var L = lockedMainL._L;
 
-                        LuaWrapper.luaL_unref(L, _refTable, _ref);
-                    }
-                    else
-                    {
-                        _objectTranslator.DeferUnref(_refTable, _ref);
+                            LuaWrapper.luaL_unref(L, _refTable, _ref);
+                        }
+                        else
+                        {
+                            _objectTranslator.DeferUnref(_refTable, _ref);
+                        }
                     }
                 }
-            }
-            catch (ObjectDisposedException)
-            {
-                // objectTranslator already disposed with Lua state
+                catch (ObjectDisposedException)
+                {
+                    // objectTranslator already disposed with Lua state
+                }
             }
         }
 
