@@ -466,7 +466,9 @@ namespace LuaCLRBridge.Test.ObjectTranslator
 
                 Assert.AreEqual(1, r.Length);
                 Assert.AreEqual(true, r[0]);
+#pragma warning disable 1718
                 Assert.AreNotEqual(x == x, r[0]);
+#pragma warning restore 1718
 
                 r = lua.Do("return x == y");
 

@@ -36,7 +36,9 @@ namespace LuaCLRBridge
                 MemberTypes.Field |
                 MemberTypes.Property;
 
+#pragma warning disable 0649
             private MemberTypes _memberTypes;  // TODO: to be set by a binding hint in Lua
+#pragma warning restore 0649
 
             private MethodAttributes _methodAttributesMask = MethodAttributes.SpecialName;
             private MethodAttributes _methodAttributes;

@@ -355,7 +355,9 @@ namespace LuaCLRBridge.Test.ObjectTranslator
         {
             internal double y = 0;
 
+#pragma warning disable 0169
             private double z;
+#pragma warning restore 0169
 
             protected double a = 0;
         }
