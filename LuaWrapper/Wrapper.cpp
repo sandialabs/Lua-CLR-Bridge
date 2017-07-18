@@ -1665,7 +1665,15 @@ namespace Lua
 
 		~LuaStreamReader()
 		{
-			bufferHandle.Free();
+			this->!LuaStreamReader();
+
+			GC::SuppressFinalize(this);
+		}
+
+		!LuaStreamReader()
+		{
+			if (bufferHandle.IsAllocated)
+				bufferHandle.Free();
 		}
 
 	public:
@@ -1738,6 +1746,13 @@ namespace Lua
 		}
 
 		~LuaAllocTracker()
+		{
+			this->!LuaAllocTracker();
+
+			GC::SuppressFinalize(this);
+		}
+
+		!LuaAllocTracker()
 		{
 			delete _allocated;
 		}
