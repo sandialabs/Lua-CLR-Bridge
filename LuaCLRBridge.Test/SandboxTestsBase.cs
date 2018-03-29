@@ -16,14 +16,14 @@ namespace LuaCLRBridge.Test
     public abstract class SandboxTestsBase
     {
 #if NO_SANDBOX
-        protected static LuaBridge CreateLuaBridge( bool registerBridge = true, System.Text.Encoding encoding = null )
+        protected static LuaBridge CreateLuaBridge( string clrBridge = null, System.Text.Encoding encoding = null )
         {
-            return new LuaBridge(registerBridge, encoding);
+            return new LuaBridge(clrBridge, encoding);
         }
 
-        protected InstrumentedLuaBridge CreateInstrumentedLuaBridge( Instrumentations instrumentations, bool registerBridge = true, System.Text.Encoding encoding = null )
+        protected InstrumentedLuaBridge CreateInstrumentedLuaBridge( Instrumentations instrumentations, string clrBridge = null, System.Text.Encoding encoding = null )
         {
-            return new InstrumentedLuaBridge(instrumentations, registerBridge, encoding);
+            return new InstrumentedLuaBridge(instrumentations, clrBridge, encoding);
         }
 #else
         private static LuaCLRBridge.Test.Sandbox.Sandbox sandbox = new LuaCLRBridge.Test.Sandbox.Sandbox();
