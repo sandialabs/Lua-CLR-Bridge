@@ -353,12 +353,14 @@ namespace LuaCLRBridge.Test.ObjectTranslator
             }
         }
 
+        private static object ReturnNull() { return null; }
+
         [TestMethod]
         public void TranslateDelegateUserData()
         {
             using (var lua = CreateLuaBridge())
             {
-                Func<object> x = delegate { return null; };
+                Func<object> x = ReturnNull;
 
                 lua["x"] = x;
 
