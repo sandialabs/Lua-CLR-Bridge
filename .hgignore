@@ -1,8 +1,12 @@
 syntax: glob
-bin/
-doxygen/
-*/obj/
-TestResults/
+
+.vs/
 *.sdf
 *.suo
 *.user
+
+bin/
+*/obj/
+TestResults/
+
+doxygen/
