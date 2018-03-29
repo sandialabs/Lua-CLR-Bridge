@@ -56,7 +56,7 @@ namespace LuaCLRBridge
                     else
                         objectTranslator.TryEnterLua(ref _lockTaken);
                 }
-                catch (Exception)
+                catch
                 {
                     if (_lockTaken)
                         objectTranslator.ExitLua();

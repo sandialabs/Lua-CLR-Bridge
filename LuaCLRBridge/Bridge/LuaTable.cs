@@ -322,7 +322,7 @@ namespace LuaCLRBridge
                     {
                         array[i] = element;
                     }
-                    catch (Exception)
+                    catch
                     {
                         LuaWrapper.lua_pop(L, 1);  // self
 

@@ -698,7 +698,7 @@ namespace LuaCLRBridge
             {
                 throw;  // Lua internal; not for us
             }
-            catch (Exception)
+            catch
             {
                 // throwing from message handler is unproductive
             }

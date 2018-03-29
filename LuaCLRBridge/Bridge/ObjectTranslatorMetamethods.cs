@@ -998,7 +998,7 @@ namespace LuaCLRBridge
                 {
                     throw;  // Lua internal; not for us
                 }
-                catch (Exception)
+                catch
                 {
                     goto invalidIndex;
                 }
@@ -1026,7 +1026,7 @@ namespace LuaCLRBridge
                 {
                     throw;  // Lua internal; not for us
                 }
-                catch (Exception)
+                catch
                 {
                     goto invalidIndex;
                 }
