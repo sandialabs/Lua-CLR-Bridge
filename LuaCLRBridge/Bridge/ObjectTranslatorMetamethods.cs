@@ -223,6 +223,11 @@ namespace LuaCLRBridge
                     return 1;
                 }
             }
+            catch (TargetInvocationException ex)
+            {
+                ex.InnerException.PreserveStackTrace();
+                return Throw(L, ex.InnerException);
+            }
             catch (SEHException)
             {
                 throw;  // Lua internal; not for us
@@ -1080,6 +1085,11 @@ namespace LuaCLRBridge
                 PushObject(L, results[0]);
                 return 1;
             }
+            catch (TargetInvocationException ex)
+            {
+                ex.InnerException.PreserveStackTrace();
+                return Throw(L, ex.InnerException);
+            }
             catch (SEHException)
             {
                 throw;  // Lua internal; not for us
@@ -1135,6 +1145,11 @@ namespace LuaCLRBridge
 
                 LuaWrapper.lua_settop(L, 0);
                 return 0;
+            }
+            catch (TargetInvocationException ex)
+            {
+                ex.InnerException.PreserveStackTrace();
+                return Throw(L, ex.InnerException);
             }
             catch (SEHException)
             {
