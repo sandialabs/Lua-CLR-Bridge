@@ -101,7 +101,7 @@ namespace LuaCLRBridge
                     catch (ArgumentException ex)
                     {
                         // wrong number of type args or type arg constraints not satisfied
-                        throw new BindingHintsException(String.Format("Binding-hints table has unexpected type arguments", ex));
+                        throw new BindingHintsException(String.Format("Binding-hints table has unexpected type arguments"), ex);
                     }
                 }
                 else if (typeArgs.Length > 0)
