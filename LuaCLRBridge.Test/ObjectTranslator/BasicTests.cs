@@ -549,7 +549,7 @@ namespace LuaCLRBridge.Test.ObjectTranslator
             }
         }
 
-        private LuaCFunction generateDelegate( bool value )
+        private LuaCFunction GenerateDelegate( bool value )
         {
             return delegate( IntPtr L )
                 {
@@ -564,7 +564,7 @@ namespace LuaCLRBridge.Test.ObjectTranslator
         {
             using (var lua = new LuaBridge())
             {
-                lua["f"] = generateDelegate(true);
+                lua["f"] = GenerateDelegate(true);
 
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
